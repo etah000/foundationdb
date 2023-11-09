@@ -106,7 +106,7 @@ endif()
 # Pip
 ################################################################################
 
-option(BUILD_DOCUMENTATION "build documentation" ON)
+option(BUILD_DOCUMENTATION "build documentation" OFF)
 find_package(Python3 COMPONENTS Interpreter)
 if (WITH_PYTHON AND Python3_Interpreter_FOUND AND BUILD_DOCUMENTATION)
   set(WITH_DOCUMENTATION ON)
@@ -118,7 +118,7 @@ endif()
 # GO
 ################################################################################
 
-option(BUILD_GO_BINDING "build go binding" ON)
+option(BUILD_GO_BINDING "build go binding" OFF)
 if(BUILD_GO_BINDING AND NOT WITH_C_BINDING)
   message(WARNING "Go binding depends on C binding, but C binding is not enabled")
 endif()
@@ -142,7 +142,7 @@ endif()
 # Ruby
 ################################################################################
 
-option(BUILD_RUBY_BINDING "build ruby binding" ON)
+option(BUILD_RUBY_BINDING "build ruby binding" OFF)
 if(BUILD_RUBY_BINDING AND NOT WITH_C_BINDING)
   message(WARNING "Ruby binding depends on C binding, but C binding is not enabled")
 endif()

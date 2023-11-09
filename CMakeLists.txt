@@ -147,7 +147,7 @@ configure_file(fdb.cluster.cmake ${CMAKE_CURRENT_BINARY_DIR}/fdb.cluster)
 ################################################################################
 # testing
 ################################################################################
-enable_testing()
+# enable_testing()
 
 ################################################################################
 # Directory structure
@@ -170,38 +170,41 @@ if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
   include_directories(/usr/local/include)
 endif()
 
+include (AddFdbTest)
+
 include(CompileBoost)
 include(GetMsgpack)
+
 add_subdirectory(flow)
 add_subdirectory(fdbrpc)
 add_subdirectory(fdbclient)
-add_subdirectory(fdbserver)
+# add_subdirectory(fdbserver)
 add_subdirectory(fdbcli)
-if(NOT WIN32)
-  add_subdirectory(fdbmonitor)
-else()
-  add_subdirectory(fdbservice)
-endif()
-add_subdirectory(fdbbackup)
+# if(NOT WIN32)
+#   add_subdirectory(fdbmonitor)
+# else()
+#   add_subdirectory(fdbservice)
+# endif()
+# add_subdirectory(fdbbackup)
 add_subdirectory(contrib)
-add_subdirectory(tests)
-add_subdirectory(flowbench EXCLUDE_FROM_ALL)
+# add_subdirectory(tests)
+# add_subdirectory(flowbench EXCLUDE_FROM_ALL)
 if(WITH_PYTHON AND WITH_C_BINDING)
   add_subdirectory(bindings)
 endif()
-if(WITH_DOCUMENTATION)
-  add_subdirectory(documentation)
-endif()
+# if(WITH_DOCUMENTATION)
+#   add_subdirectory(documentation)
+# endif()
 
-if(WIN32)
-  add_subdirectory(packaging/msi)
-else()
-  include(CPack)
-endif()
+# if(WIN32)
+#   add_subdirectory(packaging/msi)
+# else()
+#   include(CPack)
+# endif()
 
-if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
-  add_link_options(-lexecinfo)
-endif()
+# if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+#   add_link_options(-lexecinfo)
+# endif()
 
 ################################################################################
 # Build information
